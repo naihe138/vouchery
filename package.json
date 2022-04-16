@@ -16,12 +16,16 @@
     "recoil": "^0.7.1"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^1.8.8",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
+    "framer-motion": "^6.3.0",
     "husky": "^7.0.4",
     "postcss-cssnext": "^3.1.1",
     "pretty-quick": "^3.1.3",

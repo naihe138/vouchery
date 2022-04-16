@@ -1,3 +1,9 @@
-## 我的 react 开发模板
+## run the project
 
-以后接入脚手架
+```shell
+npm install
+
+npm run dev
+```
+
+
