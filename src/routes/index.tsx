@@ -5,6 +5,7 @@ import { useRoutes } from 'react-router-dom';
 import Layout from '../layouts/index';
 const Home = lazy(() => import('../pages/home/index'));
 const About = lazy(() => import('../pages/about/index'));
+const Promotions = lazy(() => import('../pages/promotions/index'));
 const NoMatch = lazy(() => import('../pages/noMatch/index'));
 
 const addPageLoading = (PageComponent: LazyExoticComponent<FC>) => (
@@ -26,6 +27,11 @@ const routeObjects: RouteObject[] = [
         index: true,
         path: '/about',
         element: addPageLoading(About),
+      },
+      {
+        index: true,
+        path: '/promotions',
+        element: addPageLoading(Promotions),
       },
       {
         path: '*',

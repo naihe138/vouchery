@@ -7,21 +7,51 @@ import { TMenuItem } from './menuConfig';
 type TMenuItemProps = {
   isChildren?: boolean;
   menu: TMenuItem;
+  onClick: (item: TMenuItem, parentKey: string | undefined) => void;
+  parentKey?: string;
+  isParentSelect?: boolean;
 };
 
-const MenuItem: FC<TMenuItemProps> = ({ isChildren, menu }) => {
+const MenuItem: FC<TMenuItemProps> = ({ parentKey, menu, onClick, isParentSelect }) => {
   const navigate = useNavigate();
   const iconSize = 4;
   const itemColor = menu.isSelect ? '#0C2161' : '#738094';
   const itemFontWeight = menu.isSelect ? 'bold' : 'normal';
-  const handleClick = () => {};
+  const handleClick = () => {
+    onClick(menu, parentKey);
+  };
+
+  function setItemBg(): string {
+    let bgColor = '';
+    if (parentKey) {
+      if (!parentKey) {
+        bgColor = '#F7FAFC';
+      } else {
+        bgColor = '#EEF2F6';
+      }
+    } else {
+    }
+
+    return bgColor;
+  }
+
   return (
     <Flex
       alignItems="center"
-      bg={menu.isSelect ? (isChildren ? '#F7FAFC' : '#EEF2F6') : '#ffffff'}
+      backgroundColor={
+        parentKey
+          ? menu.isSelect
+            ? '#EEF2F6'
+            : isParentSelect
+            ? '#F7FAFC'
+            : '#ffffff'
+          : menu.isSelect
+          ? '#F7FAFC'
+          : '#ffffff'
+      }
       width="240px"
       height="46px"
-      paddingLeft={isChildren ? '40px' : '20px'}
+      paddingLeft={parentKey ? '40px' : '20px'}
       boxSizing="border-box"
       cursor="default"
       onClick={handleClick}

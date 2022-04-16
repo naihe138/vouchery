@@ -38,7 +38,7 @@ export const menuConfig: TMenuConfig = [
         isOpen: false,
         title: '促销活动',
         key: uuid(),
-        url: '',
+        url: '/promotions',
       },
       {
         icon: TimeIcon,
@@ -46,7 +46,7 @@ export const menuConfig: TMenuConfig = [
         isSelect: false,
         isOpen: false,
         key: uuid(),
-        url: '',
+        url: '/promotionCode',
       },
     ],
   },
@@ -56,7 +56,7 @@ export const menuConfig: TMenuConfig = [
     isSelect: false,
     isOpen: false,
     key: uuid(),
-    url: '',
+    url: '/codeRedemption',
   },
   {
     icon: PlusSquareIcon,
@@ -64,7 +64,7 @@ export const menuConfig: TMenuConfig = [
     isSelect: false,
     isOpen: false,
     key: uuid(),
-    url: '',
+    url: '/memberManagement',
   },
   {
     icon: SettingsIcon,
@@ -72,6 +72,6 @@ export const menuConfig: TMenuConfig = [
     isSelect: false,
     isOpen: false,
     key: uuid(),
-    url: '',
+    url: '/products',
   },
 ];
