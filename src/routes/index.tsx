@@ -8,7 +8,7 @@ const About = lazy(() => import('../pages/about/index'));
 const NoMatch = lazy(() => import('../pages/noMatch/index'));
 
 const addPageLoading = (PageComponent: LazyExoticComponent<FC>) => (
-  <Suspense fallback={<>...</>}>
+  <Suspense fallback={<>loading...</>}>
     <PageComponent />
   </Suspense>
 );
