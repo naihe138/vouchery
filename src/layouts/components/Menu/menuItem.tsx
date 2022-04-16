@@ -1,7 +1,6 @@
-import { Box, Center, Collapse, Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { FC } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { TMenuItem } from './menuConfig';
 
 type TMenuItemProps = {

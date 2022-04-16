@@ -1,6 +1,6 @@
-import { Box, Center, Collapse, Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Collapse } from '@chakra-ui/react';
 import { FC, useState } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { menuConfig, TMenuItem } from './menuConfig';
 import MenuItem from './menuItem';
 const Menu: FC = () => {

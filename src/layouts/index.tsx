@@ -1,7 +1,6 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { FC } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { QuestionOutlineIcon, BellIcon, StarIcon } from '@chakra-ui/icons';
+import { Outlet } from 'react-router-dom';
 import Menu from './components/Menu';
 import Header from './components/Header';
 const Layout: FC = () => {
