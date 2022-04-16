@@ -4,8 +4,8 @@ import { RecoilRoot } from 'recoil';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import AppRouters from './routes';
-import '~/styles/reset.scss';
 import theme from './theme/index';
+import '~/styles/reset.scss';
 
 ReactDOM.render(
   <React.StrictMode>
