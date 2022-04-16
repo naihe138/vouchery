@@ -5,7 +5,7 @@ import Menu from './components/Menu';
 import Header from './components/Header';
 const Layout: FC = () => {
   return (
-    <Box>
+    <>
       <Header />
       <Flex height={window.innerHeight - 60}>
         <Menu></Menu>
@@ -13,7 +13,7 @@ const Layout: FC = () => {
           <Outlet />
         </Box>
       </Flex>
-    </Box>
+    </>
   );
 };
 
