@@ -3,10 +3,9 @@ import { extendTheme } from '@chakra-ui/react';
 export default extendTheme({
   styles: {
     global: {
-      // styles for the `body`
       body: {
-        bg: '#FAFAFA',
-        color: '#4A4A4A',
+        bg: '#EDF2F7',
+        color: '#1F242D',
         fontFamily: 'PingFang SC',
       },
     },
