@@ -13,27 +13,12 @@ type TMenuItemProps = {
 };
 
 const MenuItem: FC<TMenuItemProps> = ({ parentKey, menu, onClick, isParentSelect }) => {
-  const navigate = useNavigate();
   const iconSize = 4;
   const itemColor = menu.isSelect ? '#0C2161' : '#738094';
   const itemFontWeight = menu.isSelect ? 'bold' : 'normal';
   const handleClick = () => {
     onClick(menu, parentKey);
   };
-
-  function setItemBg(): string {
-    let bgColor = '';
-    if (parentKey) {
-      if (!parentKey) {
-        bgColor = '#F7FAFC';
-      } else {
-        bgColor = '#EEF2F6';
-      }
-    } else {
-    }
-
-    return bgColor;
-  }
 
   return (
     <Flex
