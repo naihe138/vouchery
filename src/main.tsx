@@ -7,7 +7,6 @@ import AppRouters from './routes';
 import '~/styles/reset.scss';
 import theme from './theme/index';
 
-const root = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
@@ -18,5 +17,5 @@ ReactDOM.render(
       </ChakraProvider>
     </RecoilRoot>
   </React.StrictMode>,
-  root,
+  document.getElementById('root'),
 );
