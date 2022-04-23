@@ -6,7 +6,7 @@ import MenuItem from './menuItem';
 const Menu: FC = () => {
   const navigate = useNavigate();
   const [menuOptions, setMenuOptions] = useState(menuConfig);
-  const clickMene = (item: TMenuItem, parentKey: string | undefined) => {
+  const clickMenu = (item: TMenuItem, parentKey: string | undefined) => {
     setSelect(menuOptions);
     if (parentKey) {
       const parentMenu = menuOptions.find((menu) => menu.key === parentKey);
@@ -35,7 +35,7 @@ const Menu: FC = () => {
   return (
     <Box
       w={240}
-      bg="#ffffff"
+      bg="white"
       borderRight="1px solid #cccccc"
       boxSizing="border-box"
       overflowX="hidden"
@@ -45,7 +45,7 @@ const Menu: FC = () => {
     >
       {menuOptions.map((menu) => (
         <Box key={menu.key}>
-          <MenuItem menu={menu} onClick={clickMene} />
+          <MenuItem menu={menu} onClick={clickMenu} />
           {menu.children && menu.children.length > 0 ? (
             <Collapse in={menu.isOpen} animateOpacity>
               {menu.children.map((item) => (
@@ -54,7 +54,7 @@ const Menu: FC = () => {
                   key={item.key}
                   parentKey={menu.key}
                   isParentSelect={menu.isSelect}
-                  onClick={clickMene}
+                  onClick={clickMenu}
                 />
               ))}
             </Collapse>

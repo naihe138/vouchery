@@ -10,4 +10,10 @@ export default extendTheme({
       },
     },
   },
+  colors: {
+    font: {
+      100: '#738094',
+      200: '#0C2161',
+    },
+  },
 });

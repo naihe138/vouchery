@@ -13,26 +13,26 @@ type TMenuItemProps = {
 
 const MenuItem: FC<TMenuItemProps> = ({ parentKey, menu, onClick, isParentSelect }) => {
   const iconSize = 4;
-  const itemColor = menu.isSelect ? '#0C2161' : '#738094';
+  const itemColor = menu.isSelect ? 'font.200' : 'font.100';
   const itemFontWeight = menu.isSelect ? 'bold' : 'normal';
   const handleClick = () => {
     onClick(menu, parentKey);
   };
-
+  const computedItemBgColor = () => {
+    return parentKey
+      ? menu.isSelect
+        ? '#EEF2F6'
+        : isParentSelect
+        ? '#F7FAFC'
+        : '#ffffff'
+      : menu.isSelect
+      ? '#F7FAFC'
+      : '#ffffff';
+  };
   return (
     <Flex
       alignItems="center"
-      backgroundColor={
-        parentKey
-          ? menu.isSelect
-            ? '#EEF2F6'
-            : isParentSelect
-            ? '#F7FAFC'
-            : '#ffffff'
-          : menu.isSelect
-          ? '#F7FAFC'
-          : '#ffffff'
-      }
+      backgroundColor={computedItemBgColor()}
       width="240px"
       height="46px"
       paddingLeft={parentKey ? '40px' : '20px'}
