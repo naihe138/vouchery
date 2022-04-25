@@ -56,16 +56,16 @@ const Promotions: FC = () => (
       </GridItem>
     </Grid>
     <Box bg={'white'} margin="10px 20px" borderRadius="10" overflow={'hidden'}>
-      <Tabs isManual variant="enclosed">
-        <TabList bg={'blue.50'}>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }} padding="12px 30px">
+      <Tabs isManual variant="enclosed" size="sm">
+        <TabList bg={'#F7FAFC'} color="gray.500">
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }} padding="12px 30px">
             全部(99+)
           </Tab>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }}>进行中(92)</Tab>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }}>暂停中(2)</Tab>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }}>预定(3)</Tab>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }}>已结束(33)</Tab>
-          <Tab _selected={{ color: 'blue.900', bg: 'white' }}>草稿(45)</Tab>
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }}>进行中(92)</Tab>
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }}>暂停中(2)</Tab>
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }}>预定(3)</Tab>
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }}>已结束(33)</Tab>
+          <Tab _selected={{ color: 'blue.900', bg: 'white', fontWeight: 'bold' }}>草稿(45)</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
