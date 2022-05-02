@@ -14,6 +14,7 @@ export default extendTheme({
     font: {
       100: '#738094',
       200: '#0C2161',
+      300: '#20242C',
     },
   },
 });

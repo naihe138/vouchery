@@ -1,5 +1,15 @@
 import { FC } from 'react';
-import { AddIcon, ArrowLeftIcon, ArrowRightIcon, CalendarIcon, PhoneIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
+import {
+  AddIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpDownIcon,
+  CalendarIcon,
+  DragHandleIcon,
+  PhoneIcon,
+  SearchIcon,
+  SunIcon,
+} from '@chakra-ui/icons';
 import {
   Box,
   Checkbox,
@@ -15,6 +25,13 @@ import {
   Tbody,
   Td,
   Tfoot,
+  CircularProgress,
+  IconButton,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  Button,
 } from '@chakra-ui/react';
 import {
   Pagination,
@@ -105,40 +122,303 @@ const TabPanelContent: FC = () => {
           </Pagination>
         </Flex>
       </Flex>
-      <TableContainer>
+      <TableContainer borderWidth={1} borderStyle="solid" borderColor="gray.200" borderRadius={6} marginTop={30}>
         <Table variant="simple">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
-          <Thead>
+          <Thead color="font.100">
             <Tr>
-              <Th>To convert</Th>
-              <Th>into</Th>
-              <Th isNumeric>multiply by</Th>
+              <Th></Th>
+              <Th></Th>
+              <Th>活动名称</Th>
+              <Th>状态</Th>
+              <Th>
+                <Flex alignItems="center">
+                  建立时间
+                  <ArrowUpDownIcon />
+                </Flex>
+              </Th>
+              <Th>开始时间</Th>
+              <Th>结束时间</Th>
+              <Th>
+                <Box textAlign="center">兑换情形</Box>
+              </Th>
+              <Th>
+                <Box textAlign="center">预算金额</Box>
+              </Th>
+              <Th isNumeric>动作</Th>
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody color="font.300">
             <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td isNumeric>25.4</Td>
+              <Td>
+                <Checkbox />
+              </Td>
+              <Td>
+                <ArrowRightIcon w={2.5} h={2.5} />
+              </Td>
+              <Td>
+                <Box>ID：100</Box>
+                <Box>庆祝开幕50元折扣券</Box>
+              </Td>
+              <Td>
+                <Box color="orange.300" fontWeight="bold">
+                  进行中
+                </Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="green.500" thickness="8px" />
+                  <Box>12/20</Box>
+                </Flex>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="purple.300" size="80px" thickness="6px" />
+                  <Box textAlign="center">12/20</Box>
+                </Flex>
+              </Td>
+              <Td isNumeric>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<DragHandleIcon />}></MenuButton>
+                  {/* <IconButton aria-label="Search database" icon={<DragHandleIcon />} /> */}
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create a Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                    <MenuItem>Delete</MenuItem>
+                    <MenuItem>Attend a Workshop</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Td>
             </Tr>
             <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td isNumeric>30.48</Td>
+              <Td>
+                <Checkbox />
+              </Td>
+              <Td>
+                <ArrowRightIcon w={2.5} h={2.5} />
+              </Td>
+              <Td>
+                <Box>ID：100</Box>
+                <Box>庆祝开幕50元折扣券</Box>
+              </Td>
+              <Td>
+                <Box color="orange.300" fontWeight="bold">
+                  进行中
+                </Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="green.500" thickness="8px" />
+                  <Box>12/20</Box>
+                </Flex>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="purple.300" size="80px" thickness="6px" />
+                  <Box textAlign="center">12/20</Box>
+                </Flex>
+              </Td>
+              <Td isNumeric>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<DragHandleIcon />}></MenuButton>
+                  {/* <IconButton aria-label="Search database" icon={<DragHandleIcon />} /> */}
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create a Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                    <MenuItem>Delete</MenuItem>
+                    <MenuItem>Attend a Workshop</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Td>
             </Tr>
             <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td isNumeric>0.91444</Td>
+              <Td>
+                <Checkbox />
+              </Td>
+              <Td>
+                <ArrowRightIcon w={2.5} h={2.5} />
+              </Td>
+              <Td>
+                <Box>ID：100</Box>
+                <Box>庆祝开幕50元折扣券</Box>
+              </Td>
+              <Td>
+                <Box color="orange.300" fontWeight="bold">
+                  进行中
+                </Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="green.500" thickness="8px" />
+                  <Box>12/20</Box>
+                </Flex>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="purple.300" size="80px" thickness="6px" />
+                  <Box textAlign="center">12/20</Box>
+                </Flex>
+              </Td>
+              <Td isNumeric>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<DragHandleIcon />}></MenuButton>
+                  {/* <IconButton aria-label="Search database" icon={<DragHandleIcon />} /> */}
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create a Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                    <MenuItem>Delete</MenuItem>
+                    <MenuItem>Attend a Workshop</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Checkbox />
+              </Td>
+              <Td>
+                <ArrowRightIcon w={2.5} h={2.5} />
+              </Td>
+              <Td>
+                <Box>ID：100</Box>
+                <Box>庆祝开幕50元折扣券</Box>
+              </Td>
+              <Td>
+                <Box color="orange.300" fontWeight="bold">
+                  进行中
+                </Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="green.500" thickness="8px" />
+                  <Box>12/20</Box>
+                </Flex>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="purple.300" size="80px" thickness="6px" />
+                  <Box textAlign="center">12/20</Box>
+                </Flex>
+              </Td>
+              <Td isNumeric>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<DragHandleIcon />}></MenuButton>
+                  {/* <IconButton aria-label="Search database" icon={<DragHandleIcon />} /> */}
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create a Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                    <MenuItem>Delete</MenuItem>
+                    <MenuItem>Attend a Workshop</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Checkbox />
+              </Td>
+              <Td>
+                <ArrowRightIcon w={2.5} h={2.5} />
+              </Td>
+              <Td>
+                <Box>ID：100</Box>
+                <Box>庆祝开幕50元折扣券</Box>
+              </Td>
+              <Td>
+                <Box color="orange.300" fontWeight="bold">
+                  进行中
+                </Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Box>2021/12/23</Box>
+                <Box>00:00</Box>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="green.500" thickness="8px" />
+                  <Box>12/20</Box>
+                </Flex>
+              </Td>
+              <Td>
+                <Flex flexDirection="column" justifyContent="center" alignItems="center">
+                  <CircularProgress value={80} color="purple.300" size="80px" thickness="6px" />
+                  <Box textAlign="center">12/20</Box>
+                </Flex>
+              </Td>
+              <Td isNumeric>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<DragHandleIcon />}></MenuButton>
+                  {/* <IconButton aria-label="Search database" icon={<DragHandleIcon />} /> */}
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create a Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                    <MenuItem>Delete</MenuItem>
+                    <MenuItem>Attend a Workshop</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Td>
             </Tr>
           </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>To convert</Th>
-              <Th>into</Th>
-              <Th isNumeric>multiply by</Th>
-            </Tr>
-          </Tfoot>
         </Table>
       </TableContainer>
     </Box>
