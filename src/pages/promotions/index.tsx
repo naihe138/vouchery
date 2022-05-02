@@ -1,4 +1,4 @@
-import { AddIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
+import { AddIcon, CalendarIcon, PhoneIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -8,6 +8,7 @@ import {
   HStack,
   Input,
   InputGroup,
+  InputLeftElement,
   InputRightElement,
   Select,
   Tab,
@@ -18,6 +19,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import TabPanelContent from './components/TabPanelContent';
 
 const Promotions: FC = () => (
   <Box>
@@ -32,26 +34,41 @@ const Promotions: FC = () => (
         建立新的活动
       </Button>
     </Flex>
-    <Grid templateColumns="repeat(6, 1fr)" gap={4} bg={'white'} margin="10px 20px" padding={'3'} borderRadius="10">
-      <GridItem colSpan={1} h="10">
+    <Grid templateColumns="repeat(12, 1fr)" gap={4} bg={'white'} margin="10px 20px" padding={'3'} borderRadius="10">
+      <GridItem colSpan={2} h="10">
         <Select placeholder="全部活动类型">
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
           <option value="option3">Option 3</option>
         </Select>
       </GridItem>
-      <GridItem colSpan={1} h="10">
+      <GridItem colSpan={2} h="10">
         <Select placeholder="全部管道">
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
           <option value="option3">Option 3</option>
         </Select>
       </GridItem>
-      <GridItem colStart={3} colEnd={5} h="10" />
-      <GridItem colStart={5} colEnd={7} h="10">
+      <GridItem colStart={5} colEnd={10} h="10">
+        <Flex alignItems={'center'} justifyContent="flex-end">
+          <Box width={'200px'} color="font.100" textAlign={'right'} paddingRight="10px">
+            开始时间
+          </Box>
+          <InputGroup>
+            <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
+            <Input type="tel" placeholder="开始时间" />
+          </InputGroup>
+          <Box>-</Box>
+          <InputGroup>
+            <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
+            <Input type="tel" placeholder="结束时间" />
+          </InputGroup>
+        </Flex>
+      </GridItem>
+      <GridItem colStart={10} colEnd={13} h="10">
         <InputGroup>
           <Input placeholder="活动名称/ID" />
-          <InputRightElement children={<SearchIcon />} />
+          <InputRightElement children={<SearchIcon color="gray.300" />} />
         </InputGroup>
       </GridItem>
     </Grid>
@@ -69,7 +86,7 @@ const Promotions: FC = () => (
         </TabList>
         <TabPanels>
           <TabPanel>
-            <p>全部!</p>
+            <TabPanelContent />
           </TabPanel>
           <TabPanel>
             <p>进行中!</p>
