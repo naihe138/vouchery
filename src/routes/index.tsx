@@ -9,6 +9,10 @@ const Promotions = lazy(() => import('../pages/promotions/index'));
 const NoMatch = lazy(() => import('../pages/noMatch/index'));
 const Activity = lazy(() => import('../pages/promotions/Activity/index'));
 const ActivityCreate = lazy(() => import('../pages/promotions/Activity/Create'));
+const StepInfo = lazy(() => import('../pages/promotions/Activity/StepInfo'));
+const StepSetTime = lazy(() => import('../pages/promotions/Activity/StepSetTime'));
+const StepContent = lazy(() => import('../pages/promotions/Activity/StepContent'));
+const StepCode = lazy(() => import('../pages/promotions/Activity/StepCode'));
 const addPageLoading = (PageComponent: LazyExoticComponent<FC>) => (
   <Suspense fallback={<>loading...</>}>
     <PageComponent />
@@ -39,6 +43,22 @@ const routeObjects: RouteObject[] = [
           {
             index: true,
             element: addPageLoading(ActivityCreate),
+          },
+          {
+            path: 'info',
+            element: addPageLoading(StepInfo),
+          },
+          {
+            path: 'setTime',
+            element: addPageLoading(StepSetTime),
+          },
+          {
+            path: 'content',
+            element: addPageLoading(StepContent),
+          },
+          {
+            path: 'code',
+            element: addPageLoading(StepCode),
           },
         ],
       },
