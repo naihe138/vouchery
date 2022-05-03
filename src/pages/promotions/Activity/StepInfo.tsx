@@ -3,12 +3,7 @@ import { FC } from 'react';
 import ActivityHeader from '../components/ActivityHeader';
 
 const StepInfo: FC = () => {
-  return (
-    <>
-      <ActivityHeader showButton />
-      <Box padding="20px">StepInfo</Box>
-    </>
-  );
+  return <h1>StepInfo</h1>;
 };
 
 export default StepInfo;

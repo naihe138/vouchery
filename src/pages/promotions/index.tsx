@@ -19,9 +19,11 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TabPanelContent from './components/TabPanelContent';
 
 const Promotions: FC = () => {
+  const navigate = useNavigate();
   return (
     <Box>
       <Flex bg={'white'} height="90px" alignItems={'center'} justifyContent="space-between" padding="0 30px 0 20px">
@@ -31,7 +33,15 @@ const Promotions: FC = () => {
             促销活动
           </Text>
         </Flex>
-        <Button leftIcon={<AddIcon />} colorScheme="yellow" color={'white'} variant="solid">
+        <Button
+          leftIcon={<AddIcon />}
+          colorScheme="yellow"
+          color={'white'}
+          variant="solid"
+          onClick={() => {
+            navigate('/active');
+          }}
+        >
           建立新的活动
         </Button>
       </Flex>

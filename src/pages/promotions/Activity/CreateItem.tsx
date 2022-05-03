@@ -1,6 +1,7 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, ComponentWithAs, Flex, Grid, GridItem, IconProps, Text } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TagIcon } from '~/config/icon';
 
 type TProps = {
@@ -12,6 +13,11 @@ type TProps = {
 
 const CreateActivityItem: FC<TProps> = (props) => {
   const { Icon, title, describe, text } = props;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/active/info');
+  };
   return (
     <GridItem
       w="100%"
@@ -30,6 +36,7 @@ const CreateActivityItem: FC<TProps> = (props) => {
         '& .desc': { display: 'none' },
         '& .desc1': { display: 'block' },
       }}
+      onClick={handleClick}
     >
       <Flex alignItems="center" justifyContent="center" width="100%" height="100%" flexDirection="column">
         <Icon w={35} h={35} color="cyan.900"></Icon>
