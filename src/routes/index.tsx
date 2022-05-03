@@ -7,7 +7,8 @@ const Home = lazy(() => import('../pages/home/index'));
 const About = lazy(() => import('../pages/about/index'));
 const Promotions = lazy(() => import('../pages/promotions/index'));
 const NoMatch = lazy(() => import('../pages/noMatch/index'));
-
+const Activity = lazy(() => import('../pages/promotions/Activity/index'));
+const ActivityCreate = lazy(() => import('../pages/promotions/Activity/Create'));
 const addPageLoading = (PageComponent: LazyExoticComponent<FC>) => (
   <Suspense fallback={<>loading...</>}>
     <PageComponent />
@@ -24,14 +25,22 @@ const routeObjects: RouteObject[] = [
         element: addPageLoading(Home),
       },
       {
-        index: true,
         path: '/about',
         element: addPageLoading(About),
       },
       {
-        index: true,
         path: '/promotions',
         element: addPageLoading(Promotions),
+      },
+      {
+        path: '/active',
+        element: addPageLoading(Activity),
+        children: [
+          {
+            index: true,
+            element: addPageLoading(ActivityCreate),
+          },
+        ],
       },
       {
         path: '*',

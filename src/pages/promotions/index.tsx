@@ -22,10 +22,9 @@ import { FC } from 'react';
 import TabPanelContent from './components/TabPanelContent';
 
 const Promotions: FC = () => {
-  const boxHeight = window.innerHeight - 60;
   return (
-    <Box height={boxHeight} overflowY="auto">
-      <Flex bg={'white'} height="100px" alignItems={'center'} justifyContent="space-between" padding="0 30px 0 20px">
+    <Box>
+      <Flex bg={'white'} height="90px" alignItems={'center'} justifyContent="space-between" padding="0 30px 0 20px">
         <Flex color={'blue.900'} alignItems={'center'}>
           <SunIcon boxSize={6} />
           <Text fontSize="xl" fontWeight={'bold'} marginLeft="10px">
@@ -38,17 +37,19 @@ const Promotions: FC = () => {
       </Flex>
       <Grid templateColumns="repeat(12, 1fr)" gap={4} bg={'white'} margin="10px 20px" padding={'3'} borderRadius="10">
         <GridItem colSpan={2} h="10">
-          <Select placeholder="全部活动类型">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+          <Select>
+            <option value="option1">全部活动类型</option>
+            <option value="option2">折价券</option>
+            <option value="option3">赠品券</option>
+            <option value="option3">礼品卡</option>
+            <option value="option3">会员礼</option>
           </Select>
         </GridItem>
         <GridItem colSpan={2} h="10">
-          <Select placeholder="全部管道">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+          <Select>
+            <option value="option1">全部管道</option>
+            <option value="option2">全部管道 2</option>
+            <option value="option3">全部管道 3</option>
           </Select>
         </GridItem>
         <GridItem colStart={5} colEnd={10} h="10">
