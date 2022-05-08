@@ -78,6 +78,7 @@ const Activity: FC = () => {
       </Flex>
       <Box>
         <Outlet />
+        <Box h="120px"></Box>
       </Box>
     </>
   );
