@@ -1,15 +1,48 @@
-import { AddIcon, ArrowBackIcon, ChevronLeftIcon, PlusSquareIcon, SunIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { AddIcon, ArrowBackIcon, ChevronLeftIcon, EmailIcon, PlusSquareIcon, SunIcon } from '@chakra-ui/icons';
+import { Box, Button, ComponentWithAs, Flex, IconProps, Text } from '@chakra-ui/react';
 import { FC, useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate, useRoutes } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useRoutes, useSearchParams } from 'react-router-dom';
 import ActivityHeader from '../components/ActivityHeader';
+import { GiftIcon, MemberIcon, TagIcon } from '~/config/icon';
+
+type TIcon = ComponentWithAs<'svg', IconProps>;
+type TCreateIcons = {
+  icon: TIcon;
+  title: string;
+};
+const createIcons: Record<string, TCreateIcons> = {
+  tags: {
+    icon: TagIcon,
+    title: '折价券',
+  },
+  coupon: {
+    icon: AddIcon,
+    title: '贈品券',
+  },
+  gift: {
+    icon: GiftIcon,
+    title: '禮品卡',
+  },
+  member: {
+    icon: MemberIcon,
+    title: '会员礼',
+  },
+};
 
 const Activity: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [showButton, setShowButton] = useState(false);
+  const [Icon, setIcon] = useState<TIcon | null>(null);
+  const [title, setTitle] = useState<string>('');
   useEffect(() => {
     setShowButton(location.pathname !== '/active');
+    const type = searchParams.get('type');
+    if (type && createIcons[type]) {
+      setIcon(createIcons[type].icon);
+      setTitle(createIcons[type].title);
+    }
   }, [location]);
   return (
     <>
@@ -26,6 +59,11 @@ const Activity: FC = () => {
           <Text fontSize="xl" fontWeight={'bold'} marginLeft="4px">
             建立新的活动
           </Text>
+          {showButton && Icon ? (
+            <Button leftIcon={<Icon />} colorScheme="blue" variant="solid" size="sm" marginLeft="3">
+              {title}
+            </Button>
+          ) : null}
         </Flex>
         {showButton ? (
           <Box>

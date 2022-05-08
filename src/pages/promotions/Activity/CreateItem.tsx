@@ -9,14 +9,15 @@ type TProps = {
   title: string;
   describe: string;
   text: string;
+  type: string;
 };
 
 const CreateActivityItem: FC<TProps> = (props) => {
-  const { Icon, title, describe, text } = props;
+  const { Icon, title, describe, text, type } = props;
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/active/info');
+    navigate(`/active/info?type=${type}`);
   };
   return (
     <GridItem
