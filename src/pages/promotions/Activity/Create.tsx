@@ -7,7 +7,7 @@ import CreateActivityItem from './CreateItem';
 
 const CreateActivity: FC = () => {
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={10}>
+    <Grid templateColumns="repeat(4, 1fr)" gap={10} padding="40px">
       <CreateActivityItem
         Icon={TagIcon}
         title="折价券"

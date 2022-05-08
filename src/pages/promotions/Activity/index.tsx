@@ -76,7 +76,7 @@ const Activity: FC = () => {
           </Box>
         ) : null}
       </Flex>
-      <Box padding="20px">
+      <Box>
         <Outlet />
       </Box>
     </>
