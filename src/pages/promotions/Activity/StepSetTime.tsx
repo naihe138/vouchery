@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Advanced from '../components/Advanced';
 import FootStep from '../components/FootStep';
 
@@ -40,6 +41,9 @@ const StepSetTime: FC = () => {
   const [startValue, setStartValue] = useState('startTime');
   const [endValue, setEndValue] = useState('endTime');
   const [weeksValue, setWeeksValue] = useState(weeks);
+  const [addAdvanced, setAdvanced] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   function onSubmit(values: any) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -52,11 +56,14 @@ const StepSetTime: FC = () => {
     console.log('handlePrevious');
   };
   const handleNext = () => {
-    console.log('handleNext');
+    navigate(`/active/content${location.search}`);
   };
   const handleWeeks = (index: number) => {
     weeksValue[index].select = !weeksValue[index].select;
     setWeeksValue([...weeksValue]);
+  };
+  const handleAddAdvanced = () => {
+    setAdvanced(!addAdvanced);
   };
   return (
     <>
@@ -163,92 +170,98 @@ const StepSetTime: FC = () => {
           borderStyle="solid"
         >
           <Flex
-            bg="cyan.800"
+            bg={addAdvanced ? 'cyan.800' : ''}
             width="200px"
             height="200px"
             flexDirection={'column'}
             alignItems="center"
             justifyContent="center"
             borderRadius="6px"
+            borderWidth="1px"
+            borderStyle="solid"
+            borderColor={'gray.300'}
             _hover={{
               bg: 'yellow.400',
               '& svg': { display: 'none' },
               '& .desc': { display: 'none' },
               '& .desc1': { display: 'block' },
             }}
+            onClick={handleAddAdvanced}
           >
-            <AddIcon w={35} h={35} color="white" />
-            <Text marginTop="10px" color="white" className="desc" userSelect={'none'}>
+            <AddIcon w={35} h={35} color={addAdvanced ? 'white' : 'gray.300'} />
+            <Text marginTop="10px" color={addAdvanced ? 'white' : 'gray.500'} className="desc" userSelect={'none'}>
               于特定时间进行
             </Text>
             <Text marginTop="10px" color="white" className="desc1" display={'none'} userSelect={'none'}>
-              新增设定
+              {addAdvanced ? '取消新增设定' : '新增设定'}
             </Text>
           </Flex>
         </Box>
-        <Box>
-          <Advanced title="于特定时间进行">
-            <Box
-              bg={'white'}
-              padding="40px"
-              borderBottomLeftRadius="8px"
-              borderBottomRightRadius="8px"
-              borderColor="gray.200"
-              borderWidth="1px"
-              borderStyle="solid"
-            >
-              <Text color="font.100">请选择每周重复进行活动的日子</Text>
-              <HStack spacing="24px" marginTop={'30px'}>
-                {weeksValue.map((item, index) => (
-                  <Box
-                    w="100px"
-                    h="150px"
-                    lineHeight="150px"
-                    borderWidth="1px"
-                    borderStyle={'solid'}
-                    borderColor="gray.400"
-                    borderRadius={'6px'}
-                    textAlign="center"
-                    fontSize={'lg'}
-                    fontWeight="bold"
-                    color={item.select ? 'white' : 'font.100'}
-                    bg={item.select ? 'cyan.800' : ''}
-                    transition="0.3s"
-                    key={item.title}
-                    onClick={() => handleWeeks(index)}
-                    userSelect="none"
-                  >
-                    {item.title}
+        {addAdvanced ? (
+          <Box>
+            <Advanced title="于特定时间进行">
+              <Box
+                bg={'white'}
+                padding="40px"
+                borderBottomLeftRadius="8px"
+                borderBottomRightRadius="8px"
+                borderColor="gray.200"
+                borderWidth="1px"
+                borderStyle="solid"
+              >
+                <Text color="font.100">请选择每周重复进行活动的日子</Text>
+                <HStack spacing="24px" marginTop={'30px'}>
+                  {weeksValue.map((item, index) => (
+                    <Box
+                      w="100px"
+                      h="150px"
+                      lineHeight="150px"
+                      borderWidth="1px"
+                      borderStyle={'solid'}
+                      borderColor="gray.400"
+                      borderRadius={'6px'}
+                      textAlign="center"
+                      fontSize={'lg'}
+                      fontWeight="bold"
+                      color={item.select ? 'white' : 'font.100'}
+                      bg={item.select ? 'cyan.800' : ''}
+                      transition="0.3s"
+                      key={item.title}
+                      onClick={() => handleWeeks(index)}
+                      userSelect="none"
+                    >
+                      {item.title}
+                    </Box>
+                  ))}
+                </HStack>
+                <Text color="font.100" marginTop={'100px'}>
+                  请选择每周重复进行活动的时间段
+                </Text>
+                <Flex alignItems={'center'} marginTop="30px">
+                  <Box>
+                    <Text color="font.100" marginBottom={'10px'}>
+                      开始时间
+                    </Text>
+                    <InputGroup>
+                      <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
+                      <Input type="tel" placeholder="结束时间" />
+                    </InputGroup>
                   </Box>
-                ))}
-              </HStack>
-              <Text color="font.100" marginTop={'100px'}>
-                请选择每周重复进行活动的时间段
-              </Text>
-              <Flex alignItems={'center'} marginTop="30px">
-                <Box>
-                  <Text color="font.100" marginBottom={'10px'}>
-                    开始时间
-                  </Text>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
-                    <Input type="tel" placeholder="结束时间" />
-                  </InputGroup>
-                </Box>
-                <Box w="100px" h={'2px'} bg="cyan.800" margin="30px 20px 0 20px"></Box>
-                <Box>
-                  <Text color="font.100" marginBottom={'10px'}>
-                    结束时间
-                  </Text>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
-                    <Input type="tel" placeholder="结束时间" />
-                  </InputGroup>
-                </Box>
-              </Flex>
-            </Box>
-          </Advanced>
-        </Box>
+                  <Box w="100px" h={'2px'} bg="cyan.800" margin="30px 20px 0 20px"></Box>
+                  <Box>
+                    <Text color="font.100" marginBottom={'10px'}>
+                      结束时间
+                    </Text>
+                    <InputGroup>
+                      <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
+                      <Input type="tel" placeholder="结束时间" />
+                    </InputGroup>
+                  </Box>
+                </Flex>
+              </Box>
+            </Advanced>
+          </Box>
+        ) : null}
       </Box>
       <FootStep current={2} previous={handlePrevious} next={handleNext} />
     </>

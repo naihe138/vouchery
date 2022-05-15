@@ -35,7 +35,7 @@ const StepInfo: FC = () => {
         </Text>
         <Box
           bg={'white'}
-          padding="20px"
+          padding="40px 20px"
           borderRadius="8px"
           borderColor="gray.200"
           borderWidth="1px"
@@ -49,6 +49,7 @@ const StepInfo: FC = () => {
                   *促銷活動名稱
                 </Box>
                 <Input
+                  w="360px"
                   placeholder="请填写促銷活動名稱"
                   {...register('name', {
                     required: '请填写促銷活動名稱',
@@ -62,9 +63,9 @@ const StepInfo: FC = () => {
                 <Box width="200px" color="font.100" textAlign="right" marginRight="10px">
                   促銷活動描述
                 </Box>
-                <Textarea placeholder="请填写促銷活動描述" {...register('describe')} />
+                <Textarea w="360px" placeholder="请填写促銷活動描述" {...register('describe')} />
               </Flex>
-              <Text color="font.100" fontSize="12px" paddingLeft="180px">
+              <Text color="font.100" fontSize="12px" paddingLeft="210px" paddingTop="10px">
                 您對顧客描述此促銷活動的內容與規則，讓顧客更加了解此活動如何運行。
               </Text>
             </FormControl>
@@ -74,6 +75,7 @@ const StepInfo: FC = () => {
                   *活動负责人
                 </Box>
                 <Select
+                  w="360px"
                   placeholder="请选择促銷活動负责人"
                   {...register('charge', {
                     required: '请填写促銷活動负责人',
@@ -92,6 +94,7 @@ const StepInfo: FC = () => {
                   發送的管道
                 </Box>
                 <Select
+                  w="360px"
                   placeholder="请填写發送的管道"
                   {...register('channel', {
                     required: '请填写發送的管道',
@@ -102,7 +105,7 @@ const StepInfo: FC = () => {
                   <option value="option3">Option 3</option>
                 </Select>
               </Flex>
-              <Text color="font.100" fontSize="12px" paddingLeft="180px">
+              <Text color="font.100" fontSize="12px" paddingLeft="210px" paddingTop="10px">
                 用於您促銷活動的數據分析。
               </Text>
             </FormControl>
@@ -112,6 +115,7 @@ const StepInfo: FC = () => {
                   定義预算碼
                 </Box>
                 <Input
+                  w="360px"
                   placeholder="例如：Customer care"
                   {...register('code', {
                     required: '请填写定義预算碼',
