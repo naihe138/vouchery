@@ -7,9 +7,9 @@ const Layout: FC = () => {
   return (
     <>
       <Header />
-      <Flex height={window.innerHeight - 60}>
+      <Flex height={'calc(100vh - 60px)'} overflow="hidden">
         <Menu></Menu>
-        <Box flex={1} height={window.innerHeight - 60} overflowY="auto">
+        <Box flex={1} height={'calc(100vh - 60px)'} overflowY="auto">
           <Outlet />
         </Box>
       </Flex>
