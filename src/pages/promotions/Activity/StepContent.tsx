@@ -1,18 +1,15 @@
-import { AddIcon, CalendarIcon, CloseIcon } from '@chakra-ui/icons';
+import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
   Checkbox,
   Flex,
   FormControl,
-  FormErrorMessage,
   Grid,
   GridItem,
   HStack,
   Icon,
   Input,
-  InputGroup,
-  InputLeftElement,
   Radio,
   RadioGroup,
   Select,
@@ -65,7 +62,7 @@ const StepContent: FC = () => {
     console.log('handlePrevious');
   };
   const handleNext = () => {
-    navigate(`/active/content${location.search}`);
+    navigate(`/active/code${location.search}`);
   };
   const handleWeeks = (index: number) => {
     weeksValue[index].select = !weeksValue[index].select;
