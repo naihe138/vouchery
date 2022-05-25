@@ -16,6 +16,7 @@ import {
   Text,
   Textarea,
 } from '@chakra-ui/react';
+import { SingleDatePicker } from 'react-dates';
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -42,6 +43,10 @@ const StepSetTime: FC = () => {
   const [endValue, setEndValue] = useState('endTime');
   const [weeksValue, setWeeksValue] = useState(weeks);
   const [addAdvanced, setAdvanced] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [focus, setFocus] = useState(false);
+  const [endTime, setEndTime] = useState(null);
+  const [endFocus, setEndFocus] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   function onSubmit(values: any) {
@@ -86,21 +91,35 @@ const StepSetTime: FC = () => {
                 <FormControl>
                   <Flex>
                     <Box width="200px" color="font.100" textAlign="right" marginRight="10px">
-                      *开始时间
+                      *開始時間
                     </Box>
                     <Box flex={1}>
                       <RadioGroup value={startValue} onChange={setStartValue}>
                         <Box>
-                          <Radio value="startTime">建立完成后即开始</Radio>
+                          <Radio value="startTime">建立完成後即開始</Radio>
                         </Box>
                         <Box marginTop="20px">
-                          <Radio value="setStartTime">预订时间</Radio>
+                          <Radio value="setStartTime">預定時程</Radio>
                         </Box>
-                        <Box marginTop="20px" width="80%" display={startValue === 'setStartTime' ? 'block' : 'none'}>
-                          <InputGroup>
+                        <Box marginTop="20px" display={startValue === 'setStartTime' ? 'block' : 'none'}>
+                          {/* <InputGroup>
                             <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
                             <Input type="tel" placeholder="开始时间" />
-                          </InputGroup>
+                          </InputGroup> */}
+                          <SingleDatePicker
+                            id="startTime"
+                            date={startTime} // momentPropTypes.momentObj or null
+                            onDateChange={(date: any) => setStartTime(date)} // PropTypes.func.isRequired
+                            focused={focus} // PropTypes.bool
+                            onFocusChange={({ focused }: { focused: any }) => setFocus(focused)} // PropTypes.func.isRequired
+                            numberOfMonths={1}
+                            placeholder="預定時程"
+                            displayFormat="YYYY-MM-DD"
+                            monthFormat="YYYY[年]MM[月]"
+                            showClearDate={true}
+                            isOutsideRange={() => false}
+                            phrases={{ closeDatePicker: '关闭', clearDate: '清除日期' }}
+                          />
                         </Box>
                       </RadioGroup>
                     </Box>
@@ -111,21 +130,35 @@ const StepSetTime: FC = () => {
                 <FormControl>
                   <Flex>
                     <Box width="200px" color="font.100" textAlign="right" marginRight="10px">
-                      *结束时间
+                      *結束時間
                     </Box>
                     <Box flex={1}>
                       <RadioGroup value={endValue} onChange={setEndValue}>
                         <Box>
-                          <Radio value="endTime">无限期</Radio>
+                          <Radio value="endTime">無期限</Radio>
                         </Box>
                         <Box marginTop="20px">
-                          <Radio value="setEndTime">设定时间</Radio>
+                          <Radio value="setEndTime">設定期限</Radio>
                         </Box>
                         <Box marginTop="20px" width="80%" display={endValue === 'setEndTime' ? 'block' : 'none'}>
-                          <InputGroup>
+                          {/* <InputGroup>
                             <InputLeftElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
                             <Input type="tel" placeholder="结束时间" />
-                          </InputGroup>
+                          </InputGroup> */}
+                          <SingleDatePicker
+                            id="endTime"
+                            date={endTime} // momentPropTypes.momentObj or null
+                            onDateChange={(date: any) => setEndTime(date)} // PropTypes.func.isRequired
+                            focused={endFocus} // PropTypes.bool
+                            onFocusChange={({ focused }: any) => setEndFocus(focused)} // PropTypes.func.isRequired
+                            numberOfMonths={1}
+                            placeholder="選擇日期"
+                            displayFormat="YYYY-MM-DD"
+                            monthFormat="YYYY[年]MM[月]"
+                            showClearDate={true}
+                            isOutsideRange={() => false}
+                            phrases={{ closeDatePicker: '关闭', clearDate: '清除日期' }}
+                          />
                         </Box>
                       </RadioGroup>
                     </Box>

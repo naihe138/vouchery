@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
@@ -16,22 +20,51 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "~/*": ["./src/*"],
-      "~/components/*": ["./src/components/*"],
-      "~/styles/*": ["./src/styles/*"],
-      "~/config/*": ["./src/config/*"],
-      "~/utils/*": ["./src/utils/*"],
-      "~/common/*": ["./src/common/*"],
-      "~/assets/*": ["./src/assets/*"],
-      "~/pages/*": ["./src/pages/*"],
-      "~/routes/*": ["./src/routes/*"],
-      "~/hooks/*": ["./src/hooks/*"],
-      "~/store/*": ["./src/store/*"]
+      "~/*": [
+        "./src/*"
+      ],
+      "~/components/*": [
+        "./src/components/*"
+      ],
+      "~/styles/*": [
+        "./src/styles/*"
+      ],
+      "~/config/*": [
+        "./src/config/*"
+      ],
+      "~/utils/*": [
+        "./src/utils/*"
+      ],
+      "~/common/*": [
+        "./src/common/*"
+      ],
+      "~/assets/*": [
+        "./src/assets/*"
+      ],
+      "~/pages/*": [
+        "./src/pages/*"
+      ],
+      "~/routes/*": [
+        "./src/routes/*"
+      ],
+      "~/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "~/store/*": [
+        "./src/store/*"
+      ]
     },
-    "typeRoots": ["./types/"]
+    "typeRoots": [
+      "./types/"
+    ]
   },
-  "include": ["src", "types/**/*.d.ts"],
-  "exclude": ["node_modules"],
+  "include": [
+    "src",
+    "types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

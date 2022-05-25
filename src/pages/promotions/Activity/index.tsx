@@ -4,7 +4,11 @@ import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useRoutes, useSearchParams } from 'react-router-dom';
 import ActivityHeader from '../components/ActivityHeader';
 import { GiftIcon, MemberIcon, TagIcon } from '~/config/icon';
-
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import './index.scss';
+import moment from 'moment';
+moment.locale('zh-cn');
 type TIcon = ComponentWithAs<'svg', IconProps>;
 type TCreateIcons = {
   icon: TIcon;

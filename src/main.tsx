@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import AppRouters from './routes';
 import theme from './theme/index';
 import '~/styles/main.scss';
+(window as any).global = window;
 
 ReactDOM.render(
   <React.StrictMode>
