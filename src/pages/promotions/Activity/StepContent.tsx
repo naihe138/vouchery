@@ -316,12 +316,7 @@ const StepContent: FC = () => {
                   *折扣產品％數
                 </Box>
                 <Box>
-                  <Input
-                    w="360px"
-                    {...register('discountProductNumber', {
-                      required: '请填写折扣金額',
-                    })}
-                  />
+                  <Input w="360px" />
                 </Box>
               </Flex>
               <Flex marginTop="30px">
