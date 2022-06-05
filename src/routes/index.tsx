@@ -13,6 +13,8 @@ const StepInfo = lazy(() => import('../pages/promotions/Activity/StepInfo'));
 const StepSetTime = lazy(() => import('../pages/promotions/Activity/StepSetTime'));
 const StepContent = lazy(() => import('../pages/promotions/Activity/StepContent'));
 const StepCode = lazy(() => import('../pages/promotions/Activity/StepCode'));
+
+
 const addPageLoading = (PageComponent: LazyExoticComponent<FC>) => (
   <Suspense fallback={<>loading...</>}>
     <PageComponent />

@@ -1,14 +1,17 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, Flex, Text } from '@chakra-ui/react';
-import { FC } from 'react';
+import { Box, ComponentWithAs, Flex, IconProps, Text } from '@chakra-ui/react';
+import { FC, ReactElement } from 'react';
 
 type TActive = {
   show: boolean;
   setShow: () => void;
   title: string;
+  Icon?: ComponentWithAs<'svg', IconProps>;
 };
 
-const ActiveItem: FC<TActive> = ({ show, setShow, title }) => {
+const ActiveItem: FC<TActive> = (props) => {
+  const { show, setShow, title, Icon } = props;
+
   return (
     <Flex
       bg={show ? 'cyan.800' : ''}
@@ -30,7 +33,8 @@ const ActiveItem: FC<TActive> = ({ show, setShow, title }) => {
       }}
       onClick={setShow}
     >
-      <AddIcon w={35} h={35} color={show ? 'white' : 'gray.300'} />
+      {Icon && <Icon w={35} h={35} color={show ? 'white' : 'gray.300'} />}
+
       <Text marginTop="10px" color={show ? 'white' : 'gray.500'} className="desc" userSelect={'none'} fontWeight="bold">
         {title}
       </Text>

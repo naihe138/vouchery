@@ -147,10 +147,10 @@ const StepSetTime: FC = () => {
                           </InputGroup> */}
                           <SingleDatePicker
                             id="endTime"
-                            date={endTime} // momentPropTypes.momentObj or null
-                            onDateChange={(date: any) => setEndTime(date)} // PropTypes.func.isRequired
-                            focused={endFocus} // PropTypes.bool
-                            onFocusChange={({ focused }: any) => setEndFocus(focused)} // PropTypes.func.isRequired
+                            date={endTime}
+                            onDateChange={(date: any) => setEndTime(date)}
+                            focused={endFocus}
+                            onFocusChange={({ focused }: any) => setEndFocus(focused)}
                             numberOfMonths={1}
                             placeholder="選擇日期"
                             displayFormat="YYYY-MM-DD"

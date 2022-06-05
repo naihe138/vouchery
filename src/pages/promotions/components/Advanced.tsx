@@ -6,7 +6,9 @@ type IAdvanced = {
   title: string;
 };
 const Advanced: FC<IAdvanced> = ({ children, title }) => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure({
+    isOpen: true,
+  });
   return (
     <>
       <Flex
