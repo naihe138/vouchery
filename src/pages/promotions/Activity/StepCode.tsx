@@ -1,14 +1,9 @@
-import { AddIcon, CloseIcon } from '@chakra-ui/icons';
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
-  Checkbox,
   Flex,
-  FormControl,
-  Grid,
-  GridItem,
   HStack,
-  Icon,
   Input,
   Radio,
   RadioGroup,
@@ -17,7 +12,6 @@ import {
   TagCloseButton,
   TagLabel,
   Text,
-  Textarea,
 } from '@chakra-ui/react';
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -26,15 +20,6 @@ import Advanced from '../components/Advanced';
 import FootStep from '../components/FootStep';
 import ActiveItem from './ActiveItem';
 
-type IWeek = {
-  select: boolean;
-  title: string;
-};
-const weekText: string[] = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-const weeks: IWeek[] = weekText.map((text) => ({
-  select: false,
-  title: text,
-}));
 const StepCode: FC = () => {
   const {
     handleSubmit,
@@ -42,12 +27,18 @@ const StepCode: FC = () => {
     formState: { errors, isSubmitting },
     getValues,
   } = useForm();
-  const [startValue, setStartValue] = useState('startTime');
-  const [endValue, setEndValue] = useState('endTime');
-  const [weeksValue, setWeeksValue] = useState(weeks);
-  const [discount, setDiscount] = useState(false);
-  const [discountPercent, setDiscountPercent] = useState(false);
-  const [productDiscount, setProductDiscount] = useState(false);
+  const [buildCondition, setBuildCondition] = useState('member');
+  const [codeType, setCodeType] = useState('common');
+  const [auto, setAuto] = useState(false);
+  const [manual, setManual] = useState(false);
+
+  const [maxExchange, setMaxExchange] = useState('unlimited');
+  const [codeComposition, setCodeComposition] = useState('englishDigital');
+  const [maximumValue, setMaximumValue] = useState('englishDigital');
+  const [exchangeTime, setExchangeTime] = useState('unlimited');
+
+  const [codeDistribution, setCodeDistribution] = useState('unlimited');
+
   const navigate = useNavigate();
   const location = useLocation();
   function onSubmit(values: any) {
@@ -64,10 +55,7 @@ const StepCode: FC = () => {
   const handleNext = () => {
     navigate(`/active/code${location.search}`);
   };
-  const handleWeeks = (index: number) => {
-    weeksValue[index].select = !weeksValue[index].select;
-    setWeeksValue([...weeksValue]);
-  };
+
   return (
     <>
       <Box padding="40px">
@@ -88,35 +76,33 @@ const StepCode: FC = () => {
         >
           <Flex>
             <ActiveItem
-              show={discount}
+              show={auto}
               setShow={() => {
-                setDiscountPercent(false);
-                setProductDiscount(false);
-                setDiscount(!discount);
+                setManual(false);
+                setAuto(!auto);
               }}
               title="自動生成"
             />
             <ActiveItem
-              show={discountPercent}
+              show={manual}
               setShow={() => {
-                setDiscountPercent(!discountPercent);
-                setDiscount(false);
-                setProductDiscount(false);
+                setManual(!manual);
+                setAuto(false);
               }}
               title="手動生成"
             />
           </Flex>
-          {/* 折扣金額 */}
-          {discount ? (
+          {/* 自動生成 */}
+          {auto ? (
             <Box>
               <Flex marginTop="30px">
                 <Box color="font.100" textAlign="left" marginRight="10px">
                   *生成條件
                 </Box>
                 <Box flex={1}>
-                  <RadioGroup value={endValue} onChange={setEndValue}>
+                  <RadioGroup value={buildCondition} onChange={setBuildCondition}>
                     <Flex alignItems={'center'}>
-                      <Radio value="endTime">會員點數門檻</Radio>
+                      <Radio value="member">會員點數門檻</Radio>
                       <Select width={'200px'} size="sm" marginLeft="10px">
                         <option value="option1">大於或等於</option>
                         <option value="option2">Option 2</option>
@@ -129,7 +115,7 @@ const StepCode: FC = () => {
                     </Flex>
                     <Box marginTop="20px">
                       <Flex>
-                        <Radio value="setEndTime">限制最高折扣金額</Radio>
+                        <Radio value="client">客戶群標籤為</Radio>
                         <Button
                           leftIcon={<AddIcon />}
                           colorScheme="yellow"
@@ -158,15 +144,15 @@ const StepCode: FC = () => {
             </Box>
           ) : null}
 
-          {/* 折扣％數 */}
-          {discountPercent ? (
+          {/* 手動生成 */}
+          {manual ? (
             <Box>
               <Flex marginTop="30px">
                 <Box marginLeft={'100px'}>
-                  <RadioGroup value={endValue} onChange={setEndValue}>
+                  <RadioGroup value={codeType} onChange={setCodeType}>
                     <Flex>
-                      <Radio value="endTime">通用代碼</Radio>
-                      <Radio value="setEndTime" marginLeft={'100px'}>
+                      <Radio value="common">通用代碼</Radio>
+                      <Radio value="independent" marginLeft={'100px'}>
                         獨立代碼
                       </Radio>
                     </Flex>
@@ -202,13 +188,13 @@ const StepCode: FC = () => {
               *代碼組成
             </Box>
             <Box>
-              <RadioGroup value={endValue} onChange={setEndValue}>
+              <RadioGroup value={codeComposition} onChange={setCodeComposition}>
                 <Flex>
-                  <Radio value="endTime">英數字混合</Radio>
-                  <Radio value="setEndTime" marginLeft={'50px'}>
+                  <Radio value="englishDigital">英數字混合</Radio>
+                  <Radio value="english" marginLeft={'50px'}>
                     僅英文字母
                   </Radio>
-                  <Radio value="setEndTime" marginLeft={'50px'}>
+                  <Radio value="digital" marginLeft={'50px'}>
                     僅數字
                   </Radio>
                 </Flex>
@@ -253,11 +239,11 @@ const StepCode: FC = () => {
               *每個代碼最大兌換次數
             </Box>
             <Box>
-              <RadioGroup value={endValue} onChange={setEndValue}>
+              <RadioGroup value={maxExchange} onChange={setMaxExchange}>
                 <Flex>
-                  <Radio value="endTime">無限</Radio>
+                  <Radio value="unlimited">無限</Radio>
                   <Flex alignItems={'center'}>
-                    <Radio value="setEndTime" marginLeft={'100px'}>
+                    <Radio value="limited" marginLeft={'100px'}>
                       設定次數
                     </Radio>
                     <Select width={'100px'} size="sm" marginLeft="10px">
@@ -279,11 +265,11 @@ const StepCode: FC = () => {
               *每個代碼最大價值
             </Box>
             <Box>
-              <RadioGroup value={endValue} onChange={setEndValue}>
+              <RadioGroup value={maximumValue} onChange={setMaximumValue}>
                 <Flex alignItems={'center'}>
-                  <Radio value="endTime">無限</Radio>
+                  <Radio value="unlimited">無限</Radio>
                   <Flex alignItems={'center'}>
-                    <Radio value="setEndTime" marginLeft={'100px'}>
+                    <Radio value="maximumValue" marginLeft={'100px'}>
                       最大價值
                     </Radio>
                     <Select width={'100px'} size="sm" marginLeft="10px">
@@ -305,12 +291,12 @@ const StepCode: FC = () => {
               *代碼兌換期限
             </Box>
             <Box>
-              <RadioGroup value={endValue} onChange={setEndValue}>
+              <RadioGroup value={exchangeTime} onChange={setExchangeTime}>
                 <Box>
-                  <Radio value="endTime">與促銷活動相同</Radio>
+                  <Radio value="same">與促銷活動相同</Radio>
                 </Box>
                 <Flex marginTop="20px" alignItems={'center'}>
-                  <Radio value="setEndTime">生成後</Radio>
+                  <Radio value="afterGeneration">生成後</Radio>
                   <Input w="100px" size="sm" marginLeft="10px" />
                   <Box color="font.100" marginLeft="10px">
                     天
@@ -357,15 +343,15 @@ const StepCode: FC = () => {
           borderStyle="solid"
         >
           <Box paddingLeft={'224px'}>
-            <RadioGroup value={endValue} onChange={setEndValue}>
+            <RadioGroup value={codeDistribution} onChange={setCodeDistribution}>
               <Flex alignItems={'center'}>
-                <Radio value="endTime">無限</Radio>
+                <Radio value="unlimited">無限</Radio>
                 <Button colorScheme="teal" size={'xs'} marginLeft="10px">
                   上傳名單
                 </Button>
               </Flex>
               <Flex alignItems={'center'} marginTop="50px">
-                <Radio value="setEndTime">會員群標籤為</Radio>
+                <Radio value="tags">會員群標籤為</Radio>
                 <Button
                   leftIcon={<AddIcon />}
                   colorScheme="yellow"
